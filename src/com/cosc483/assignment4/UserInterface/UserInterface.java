@@ -1,5 +1,7 @@
 package com.cosc483.assignment4.UserInterface;
 
+import com.cosc483.assignment4.Aggregations.Aggregator;
+import com.cosc483.assignment4.Aggregations.Orders;
 import com.cosc483.assignment4.SystemInterface.SystemInterface;
 
 import java.util.Scanner;
@@ -43,6 +45,7 @@ public class UserInterface {
                 case 3:
                     str = SystemInterface.getOrder();
                     displayOutput(str);
+                    System.out.println("Total: $" + SystemInterface.getTotal());
                     System.out.println();
                     break;
                 case 4:

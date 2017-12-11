@@ -12,6 +12,10 @@ public class Aggregator {
         return orders;
     }
 
+    public Double getTotal(){
+        return orders.getTotal();
+    }
+
     public void submitOrder(MenuItem i){
         orders.addItem(i);
     }

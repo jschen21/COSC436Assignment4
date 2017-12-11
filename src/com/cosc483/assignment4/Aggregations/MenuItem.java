@@ -9,11 +9,6 @@ public class MenuItem {
         this.price = price;
     }
 
-    public MenuItem(MenuItem m){
-        this.name = m.name;
-        this.price = m.price;
-    }
-
     public String getName(){
         return name;
     }
