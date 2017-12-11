@@ -5,55 +5,55 @@ import com.cosc483.assignment4.SystemInterface.SystemInterface;
 import java.util.Scanner;
 
 public class UserInterface {
-
     public static void main(String[] args) {
-	boolean cont = true;
-	while(cont){
-        Scanner cin = new Scanner(System.in);
-        String[] str;
-        displayMenu();
-        System.out.print("Select an option: ");
-        int option = getMenuOption(cin);
-        switch(option){
-            case 1:
-                str = SystemInterface.getMenu();
-                displayOutput(str);
+        boolean cont = true;
+
+        while(cont){
+            Scanner cin = new Scanner(System.in);
+            String[] str;
+            displayMenu();
+            System.out.print("Select an option: ");
+            int option = getMenuOption(cin);
+            switch(option){
+                case 1:
+                    str = SystemInterface.getMenu();
+                    displayOutput(str);
+                    System.out.println();
+                    break;
+                case 2:
+                    str = SystemInterface.getMenu();
+                    displayOutput(str);
+                    System.out.println();
+                    boolean cont2 = true;
+                    int[] arr = new int[100];
+                    int temp = 0;
+                    while(cont2){
+                        System.out.print("Enter the item number of the item you want: ");
+                        arr[temp] = getMenuItem(cin);
+                        temp++;
+                        System.out.print("Item added!\n Would you like to add more items? (y/n): ");
+                        String more = cin.next();
+                        if(more.equalsIgnoreCase("y")) continue;
+                        else cont2 = false;
+                    }
+                    str = SystemInterface.submitOrder(arr);
+                    displayOutput(str);
+                    System.out.println();
+                    break;
+                case 3:
+                    str = SystemInterface.getOrder();
+                    displayOutput(str);
+                    System.out.println();
+                    break;
+                case 4:
+                    cont = false;
+                    System.exit(0);
+            }
+            System.out.print("Would you like to continue? (y/n): ");
+            String temp = cin.next();
+            if(temp.equalsIgnoreCase("y"))
                 System.out.println();
-                break;
-            case 2:
-                str = SystemInterface.getMenu();
-                displayOutput(str);
-                System.out.println();
-                boolean cont2 = true;
-                int[] arr = new int[100];
-                int temp = 0;
-                while(cont2){
-                    System.out.print("Enter the item number of the item you want: ");
-                    arr[temp] = getMenuItem(cin);
-                    temp++;
-                    System.out.print("Item added!\n Would you like to add more items? (y/n): ");
-                    String more = cin.next();
-                    if(more.equalsIgnoreCase("y")) continue;
-                    else cont2 = false;
-                }
-                str = SystemInterface.submitOrder(arr);
-                displayOutput(str);
-                System.out.println();
-                break;
-            case 3:
-                str = SystemInterface.getOrder();
-                displayOutput(str);
-                System.out.println();
-                break;
-            case 4:
-                cont = false;
-                System.exit(0);
-        }
-        System.out.print("Would you like to continue? (y/n): ");
-        String temp = cin.next();
-        if(temp.equalsIgnoreCase("y"))
-            System.out.println();
-        else cont = false;
+            else cont = false;
         }
     }
 
