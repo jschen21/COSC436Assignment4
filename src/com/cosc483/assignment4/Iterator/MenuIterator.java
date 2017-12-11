@@ -5,9 +5,9 @@ import com.cosc483.assignment4.Aggregations.MenuItem;
 public interface MenuIterator {
     int current = 0;
 
-    public boolean hasNext();
+    boolean hasNext();
 
-    public MenuItem getItem();
+    MenuItem getItem();
 
-    public void next();
+    void next();
 }

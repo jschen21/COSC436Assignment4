@@ -20,7 +20,7 @@ public class SystemInterface {
         do {
             if (x != 0) itr.next();
             MenuItem i = itr.getItem();
-            str[x] = String.format("%2d - %-31s $%.2f", x + 1, i.getName(), i.getPrice());
+            str[x] = String.format("%2d - %-31s $%.2f", i.getNumber(), i.getName(), i.getPrice());
             x++;
         } while (itr.hasNext());
         return str;
@@ -42,7 +42,7 @@ public class SystemInterface {
         do {
             if (x != 0) itr.next();
             MenuItem i = itr.getItem();
-            str[x] = String.format("%2d - %-31s $%.2f", x + 1, i.getName(), i.getPrice());
+            str[x] = String.format("%2d - %-31s $%.2f", i.getNumber(), i.getName(), i.getPrice());
             x++;
         } while (itr.hasNext());
         return str;

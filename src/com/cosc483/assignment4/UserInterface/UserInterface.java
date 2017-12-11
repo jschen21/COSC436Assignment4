@@ -1,7 +1,12 @@
 package com.cosc483.assignment4.UserInterface;
 
+import com.cosc483.assignment4.StatePattern.*;
 import com.cosc483.assignment4.SystemInterface.SystemInterface;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -22,9 +27,31 @@ public class UserInterface {
                     System.out.println();
                     break;
                 case 2:
-                    str = SystemInterface.getMenu();
-                    displayOutput(str);
-                    System.out.println();
+                    Context context = new Context();
+                    State state;
+                    LocalTime now = LocalTime.now();
+                    LocalTime breakfastStart = LocalTime.parse("06:00");
+                    LocalTime lunchStart = LocalTime.parse("12:00");
+                    LocalTime dinnerStart = LocalTime.parse("18:00");
+                    LocalTime closingTime = LocalTime.parse("00:00");
+                    if(now.equals(breakfastStart) || now.isAfter(breakfastStart) && now.isBefore(lunchStart)){
+                        state = new Breakfast();
+                        state.doAction(context);
+                    }
+                    else if(now.equals(lunchStart) || now.isAfter(lunchStart) && now.isBefore(dinnerStart)){
+                        state = new Lunch();
+                        state.doAction(context);
+                    }
+                    else if(now.equals(dinnerStart) || now.isAfter(dinnerStart) && now.isBefore(closingTime)){
+                        state = new Dinner();
+                        state.doAction(context);
+                    }
+                    else{
+                        System.out.println("Sorry we are closed.");
+                    }
+
+                    break;
+                case 3:
                     boolean cont2 = true;
                     int[] arr = new int[100];
                     int temp = 0;
@@ -43,13 +70,15 @@ public class UserInterface {
                     displayOutput(str);
                     System.out.println();
                     break;
-                case 3:
+                case 4:
                     str = SystemInterface.getOrder();
+                    System.out.println("------ Tab ------");
                     displayOutput(str);
                     System.out.println("Total: $" + SystemInterface.getTotal());
                     System.out.println();
                     break;
-                case 4:
+                case 5:
+                    System.out.println("System closing");
                     cont = false;
                     System.exit(0);
             }
@@ -60,15 +89,16 @@ public class UserInterface {
 
     public static  void displayMenu(){
         System.out.println("OPTIONS:");
-        System.out.println("1 - Display Menu");
-        System.out.println("2 - Order Items");
-        System.out.println("3 - Show Tab");
-        System.out.println("4 - Exit");
+        System.out.println("1 - Display Full Menu");
+        System.out.println("2 - Display Variable Menu");
+        System.out.println("3 - Order Items");
+        System.out.println("4 - Show Tab");
+        System.out.println("5 - Exit");
     }
 
     public static int getMenuOption(Scanner scan){
         int temp = scan.nextInt();
-        while(temp > 4 || temp < 1){
+        while(temp > 5 || temp < 1){
             System.out.println();
             System.out.print("Please enter an option: ");
             temp = scan.nextInt();
