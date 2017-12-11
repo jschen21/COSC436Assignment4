@@ -3,10 +3,7 @@ package com.cosc483.assignment4.UserInterface;
 import com.cosc483.assignment4.StatePattern.*;
 import com.cosc483.assignment4.SystemInterface.SystemInterface;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.Scanner;
 
 public class UserInterface {

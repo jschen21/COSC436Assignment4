@@ -30,21 +30,6 @@ public class Menu {
         items[19] = new MenuItem(20,"Mashed Potatoes", 3.49, 3);
     }
 
-    public void addItem(MenuItem i){
-        int x = 0;
-        while(x < 99){
-            if(items[x] != null)
-                x++;
-            else
-                break;
-        }
-        items[x] = i;
-    }
-
-    public static MenuItem getItems(int i) {
-        return items[i];
-    }
-
     public MenuIterator getMenuIterator(){
         return new AllitemsIterator();
     }

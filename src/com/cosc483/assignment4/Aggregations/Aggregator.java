@@ -12,7 +12,7 @@ public class Aggregator {
         return orders;
     }
 
-    public Double getTotal(){
+    public double getTotal(){
         return orders.getTotal();
     }
 
