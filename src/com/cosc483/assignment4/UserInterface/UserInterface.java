@@ -1,7 +1,5 @@
 package com.cosc483.assignment4.UserInterface;
 
-import com.cosc483.assignment4.Aggregations.Aggregator;
-import com.cosc483.assignment4.Aggregations.Orders;
 import com.cosc483.assignment4.SystemInterface.SystemInterface;
 
 import java.util.Scanner;
@@ -16,6 +14,7 @@ public class UserInterface {
             displayMenu();
             System.out.print("Select an option: ");
             int option = getMenuOption(cin);
+            System.out.println();
             switch(option){
                 case 1:
                     str = SystemInterface.getMenu();
@@ -30,13 +29,15 @@ public class UserInterface {
                     int[] arr = new int[100];
                     int temp = 0;
                     while(cont2){
-                        System.out.print("Enter the item number of the item you want: ");
-                        arr[temp] = getMenuItem(cin);
-                        temp++;
-                        System.out.print("Item added!\n Would you like to add more items? (y/n): ");
-                        String more = cin.next();
-                        if(more.equalsIgnoreCase("y")) continue;
-                        else cont2 = false;
+                        System.out.print("Enter the item number of the item you want(Enter 0 to stop ordering): ");
+                        int choice = cin.nextInt();
+                        if(choice == 0)
+                            cont2 = false;
+                        else{
+                            arr[temp] = choice;
+                            temp++;
+                            System.out.println("Item added!");
+                        }
                     }
                     str = SystemInterface.submitOrder(arr);
                     displayOutput(str);
@@ -52,11 +53,8 @@ public class UserInterface {
                     cont = false;
                     System.exit(0);
             }
-            System.out.print("Would you like to continue? (y/n): ");
-            String temp = cin.next();
-            if(temp.equalsIgnoreCase("y"))
-                System.out.println();
-            else cont = false;
+            System.out.println();
+
         }
     }
 
@@ -64,7 +62,7 @@ public class UserInterface {
         System.out.println("OPTIONS:");
         System.out.println("1 - Display Menu");
         System.out.println("2 - Order Items");
-        System.out.println("3 - Show Current Order");
+        System.out.println("3 - Show Tab");
         System.out.println("4 - Exit");
     }
 
@@ -84,15 +82,5 @@ public class UserInterface {
             System.out.println(str[x]);
             x++;
         }
-    }
-
-    public static int getMenuItem(Scanner scan){
-        int temp = scan.nextInt();
-        while(temp > 21 || temp < 1){
-            System.out.println();
-            System.out.print("Please enter an option: ");
-            temp = scan.nextInt();
-        }
-        return temp;
     }
 }
