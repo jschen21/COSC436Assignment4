@@ -3,7 +3,7 @@ package com.cosc483.assignment4.Iterator;
 import com.cosc483.assignment4.Aggregations.MenuItem;
 import com.cosc483.assignment4.Aggregations.Orders;
 
-public class AllOrderIterator implements OrderIterator {
+public class AllOrderIterator implements MenuIterator {
     private int current = 0;
 
     public boolean hasNext(){

@@ -1,7 +1,7 @@
 package com.cosc483.assignment4.Aggregations;
 
 import com.cosc483.assignment4.Iterator.AllOrderIterator;
-import com.cosc483.assignment4.Iterator.OrderIterator;
+import com.cosc483.assignment4.Iterator.MenuIterator;
 
 public class Orders {
     public static MenuItem[] items;
@@ -29,7 +29,7 @@ public class Orders {
         return temp;
     }
 
-    public OrderIterator getOrdersIterator(){
+    public MenuIterator getOrdersIterator(){
         return new AllOrderIterator();
     }
 }
