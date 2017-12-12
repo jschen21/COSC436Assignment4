@@ -30,7 +30,7 @@ public class UserInterface {
                     LocalTime breakfastStart = LocalTime.parse("06:00");
                     LocalTime lunchStart = LocalTime.parse("12:00");
                     LocalTime dinnerStart = LocalTime.parse("18:00");
-                    LocalTime closingTime = LocalTime.parse("00:00");
+                    LocalTime closingTime = LocalTime.parse("23:59");
                     if(now.equals(breakfastStart) || now.isAfter(breakfastStart) && now.isBefore(lunchStart)){
                         state = new Breakfast();
                         state.doAction(context);
